@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FITEC Estrategia y Capital – Consultoría Empresarial · Bogotá</title>
+<meta name="description" content="Firma de consultoría empresarial especializada en estrategia, finanzas, procesos y crecimiento. Bogotá, Colombia.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2A5C;
+    --navy-light: #1a3a78;
+    --blue: #4A90C4;
+    --teal: #4DAA8A;
+    --teal-dark: #3a8f72;
+    --white: #ffffff;
+    --off-white: #f7f9fc;
+    --gray-100: #eef2f7;
+    --gray-400: #94a3b8;
+    --gray-600: #64748b;
+    --gray-800: #1e293b;
+    --text: #1e293b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(15,42,92,0.97);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    padding: 0 40px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--teal-dark) !important; color: var(--white) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 40px 60px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(74,144,196,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 80% at 10% 80%, rgba(77,170,138,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 2px;
+    background: var(--teal);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--teal);
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    color: rgba(255,255,255,0.85);
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* Hero right: pillars */
+  .hero-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .pillar-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 22px 20px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .pillar-card:hover {
+    background: rgba(77,170,138,0.08);
+    border-color: rgba(77,170,138,0.25);
+  }
+  .pillar-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .pillar-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .pillar-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  /* ─── DESAFÍOS ─── */
+  .section { padding: 80px 40px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 2px;
+    background: var(--teal);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3vw, 2.7rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--gray-600);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .challenges-bg { background: var(--off-white); }
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 0;
+  }
+  .challenge-card {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-left: 3px solid var(--navy);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .challenge-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .challenge-card p {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  /* ─── SERVICIOS ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: rgba(77,170,138,0.06);
+    border-radius: 0 10px 0 80px;
+  }
+  .service-card:hover { transform: translateY(-3px); }
+  .service-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .service-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .service-card .service-tagline {
+    font-size: 0.82rem;
+    color: var(--blue);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .service-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .service-bullets li {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.55);
+    padding-left: 16px;
+    position: relative;
+  }
+  .service-bullets li::before {
+    content: '›';
+    position: absolute; left: 0;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  /* ─── METODOLOGÍA ─── */
+  .metodologia-bg { background: var(--navy); }
+  .metodologia-bg .section-title { color: var(--white); }
+  .metodologia-bg .section-sub { color: rgba(255,255,255,0.55); }
+  .method-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .method-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px; left: 12.5%; right: 12.5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--blue) 100%);
+    opacity: 0.3;
+  }
+  .method-step {
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+  }
+  .step-dot {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(77,170,138,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--teal);
+    position: relative;
+    z-index: 1;
+  }
+  .method-step h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .method-step p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ─── SECTORES ─── */
+  .sectors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sector-tag {
+    background: var(--gray-100);
+    border: 1px solid rgba(15,42,92,0.1);
+    border-radius: 4px;
+    padding: 9px 18px;
+    font-size: 0.83rem;
+    font-weight: 500;
+    color: var(--navy);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .sector-tag:hover {
+    background: rgba(77,170,138,0.1);
+    border-color: var(--teal);
+    color: var(--teal-dark);
+  }
+
+  /* ─── PRÓXIMOS PASOS ─── */
+  .pasos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .paso-card {
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-top: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .paso-num {
+    width: 44px; height: 44px;
+    background: var(--navy);
+    color: var(--teal);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 auto 16px;
+  }
+  .paso-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .paso-card p {
+    font-size: 0.83rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  /* ─── CONTACTO / CTA ─── */
+  .cta-section {
+    background: var(--navy);
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(77,170,138,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .cta-section .tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 40px;
+    font-style: italic;
+    position: relative;
+  }
+  .contact-cards {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 40px;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 18px 28px;
+    min-width: 200px;
+    text-align: center;
+  }
+  .contact-card .label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+  .contact-card .value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .contact-card .value:hover { color: var(--teal); }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s;
+  }
+  .btn-whatsapp:hover { background: #1ebe5d; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0a1f44;
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-brand span { color: var(--teal); }
+  .footer-text {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+  }
+  .footer-location {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    text-align: right;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 90px 24px 60px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-pillars { grid-template-columns: 1fr 1fr; }
+    .section { padding: 60px 24px; }
+    .challenges-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .method-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .method-steps::before { display: none; }
+    .pasos-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    .footer-location { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>Fitec</span> Estrategia y Capital</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#metodologia">Metodología</a></li>
+    <li><a href="#sectores">Sectores</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">Consultoría Empresarial · Bogotá D.C.</div>
+      <h1>Transformamos información en decisiones — y decisiones en <em>resultados.</em></h1>
+      <p class="hero-subtitle">Acompañamos a empresarios y equipos directivos en la construcción de organizaciones más rentables, eficientes y preparadas para crecer.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">Conversemos sin costo →</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-pillars">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Estrategia</div>
+        <div class="pillar-sub">Visión convertida en planes ejecutables</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Finanzas</div>
+        <div class="pillar-sub">Control, rentabilidad y acceso a capital</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Procesos</div>
+        <div class="pillar-sub">Eficiencia operativa con IA y automatización</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-title">Crecimiento</div>
+        <div class="pillar-sub">Resultados sostenibles y medibles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESAFÍOS -->
+<section class="section challenges-bg">
+  <div class="section-inner">
+    <div class="section-label">¿Le suena familiar?</div>
+    <h2 class="section-title">Desafíos que enfrentan nuestros clientes</h2>
+    <p class="section-sub">Muchas empresas crecen sin la información ni la estructura que necesitan. FITEC convierte esos obstáculos en oportunidades.</p>
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <h4>Sin información financiera clara</h4>
+        <p>Decisiones tomadas sin datos confiables, sin indicadores de gestión ni visibilidad del flujo de caja.</p>
+      </div>
+      <div class="challenge-card">
+        <h4>Crecimiento sin dirección estratégica</h4>
+        <p>Expansión reactiva, sin plan definido, sin metas claras ni seguimiento de resultados.</p>
+      </div>
+      <div class="challenge-card">
+        <h4>Procesos ineficientes y costosos</h4>
+        <p>Reprocesos, falta de estandarización y actividades manuales que frenan la productividad.</p>
+      </div>
+      <div class="challenge-card">
+        <h4>Dificultad para acceder a financiación</h4>
+        <p>Sin modelos financieros sólidos, los bancos e inversionistas exigen información que no existe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="section">
+  <div class="section-inner">
+    <div class="section-label">Lo que hacemos</div>
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <p class="section-sub">Soluciones integrales diseñadas para impulsar el crecimiento y la rentabilidad de su empresa.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">SERVICIO 01</div>
+        <h3>Diagnóstico Empresarial</h3>
+        <div class="service-tagline">Financiero y Estratégico</div>
+        <p>Evaluación integral de la situación financiera, operativa y estratégica. Identificamos riesgos, oportunidades y prioridades con base en datos concretos.</p>
+        <ul class="service-bullets">
+          <li>Rentabilidad, liquidez y flujo de caja</li>
+          <li>Indicadores financieros clave</li>
+          <li>Matriz de riesgos priorizada</li>
+          <li>Plan de acción con hoja de ruta</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">SERVICIO 02</div>
+        <h3>CFO as a Service</h3>
+        <div class="service-tagline">Dirección Financiera Estratégica</div>
+        <p>Dirección financiera de alto nivel de forma flexible, sin el costo de contratar un CFO de tiempo completo.</p>
+        <ul class="service-bullets">
+          <li>Planeación financiera y presupuestos</li>
+          <li>Dashboards gerenciales y KPIs</li>
+          <li>Valoración de empresas</li>
+          <li>Gestión bancaria e inversionistas</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">SERVICIO 03</div>
+        <h3>Planeación Estratégica</h3>
+        <div class="service-tagline">Visión convertida en ejecución</div>
+        <p>Definición de objetivos, estrategias y planes de acción que orienten el crecimiento y fortalezcan la posición competitiva.</p>
+        <ul class="service-bullets">
+          <li>Balanced Scorecard (BSC)</li>
+          <li>Indicadores estratégicos</li>
+          <li>Planes de crecimiento</li>
+          <li>Alineación organizacional</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">SERVICIO 04</div>
+        <h3>Optimización de Procesos</h3>
+        <div class="service-tagline">Eficiencia operativa real</div>
+        <p>Diseño y mejora de procesos empresariales para aumentar productividad, reducir costos e incorporar automatización e Inteligencia Artificial.</p>
+        <ul class="service-bullets">
+          <li>Mapeo y documentación de procesos</li>
+          <li>Estandarización y manuales operativos</li>
+          <li>Automatización de actividades</li>
+          <li>IA aplicada a procesos empresariales</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section id="metodologia" class="section metodologia-bg">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--teal)">Cómo trabajamos</div>
+    <h2 class="section-title">Nuestra Metodología</h2>
+    <p class="section-sub">Un proceso estructurado y probado, orientado siempre a resultados concretos y medibles.</p>
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="step-dot">01</div>
+        <h4>Diagnosticar</h4>
+        <p>Comprendemos la situación actual, desafíos, fortalezas y áreas de oportunidad.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-dot">02</div>
+        <h4>Diseñar</h4>
+        <p>Construimos soluciones a medida, adaptadas a la realidad de cada empresa.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-dot">03</div>
+        <h4>Implementar</h4>
+        <p>Acompañamos activamente la ejecución junto al equipo directivo.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-dot">04</div>
+        <h4>Medir</h4>
+        <p>Evaluamos resultados y promovemos la mejora continua con indicadores claros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORES -->
+<section id="sectores" class="section">
+  <div class="section-inner">
+    <div class="section-label">Experiencia transversal</div>
+    <h2 class="section-title">Sectores que Atendemos</h2>
+    <p class="section-sub">Trabajamos con empresas de distintas industrias y tamaños, desde emprendimientos en crecimiento hasta compañías de mediana escala.</p>
+    <div class="sectors-grid">
+      <span class="sector-tag">Servicios Profesionales</span>
+      <span class="sector-tag">Transporte y Logística</span>
+      <span class="sector-tag">Ingeniería</span>
+      <span class="sector-tag">Energía</span>
+      <span class="sector-tag">Tecnología</span>
+      <span class="sector-tag">Comercio</span>
+      <span class="sector-tag">Empresas Familiares</span>
+      <span class="sector-tag">PYMES</span>
+      <span class="sector-tag">Emprendimientos en Crecimiento</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS PASOS -->
+<section class="section challenges-bg">
+  <div class="section-inner">
+    <div class="section-label">El proceso es simple</div>
+    <h2 class="section-title">Próximos Pasos</h2>
+    <p class="section-sub">Comenzar es sencillo. Una conversación inicial sin costo es todo lo que necesita.</p>
+    <div class="pasos-grid">
+      <div class="paso-card">
+        <div class="paso-num">1</div>
+        <h4>Reunión Inicial</h4>
+        <p>Conversación sin costo para entender sus desafíos, objetivos y contexto empresarial.</p>
+      </div>
+      <div class="paso-card">
+        <div class="paso-num">2</div>
+        <h4>Diagnóstico Rápido</h4>
+        <p>Evaluamos la situación actual y definimos la propuesta de solución más adecuada.</p>
+      </div>
+      <div class="paso-card">
+        <div class="paso-num">3</div>
+        <h4>Propuesta Personalizada</h4>
+        <p>Plan de trabajo con alcance detallado, metodología, cronograma y condiciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACTO -->
+<section id="contacto" class="cta-section">
+  <h2>¿Listo para transformar su empresa?</h2>
+  <p class="tagline">Transformamos información en decisiones — y decisiones en resultados.</p>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="label">Gerente General</div>
+      <div class="value">Sergio Rojas García</div>
+    </div>
+    <div class="contact-card">
+      <div class="label">Correo</div>
+      <a class="value" href="mailto:serojas@gmail.com">serojas@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="label">Celular</div>
+      <a class="value" href="tel:+573243231372">324 323 1372</a>
+    </div>
+    <div class="contact-card">
+      <div class="label">Ciudad</div>
+      <div class="value">Bogotá D.C., Colombia</div>
+    </div>
+  </div>
+  <div class="cta-actions">
+    <a href="https://wa.me/573243231372?text=Hola%20Sergio%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20FITEC." class="btn-whatsapp" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Escribir por WhatsApp
+    </a>
+    <a href="mailto:serojas@gmail.com" class="btn-primary">Enviar correo →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span>Fitec</span> Estrategia y Capital</div>
+  <div class="footer-text">Estrategia · Finanzas · Procesos · Crecimiento</div>
+  <div class="footer-location">Bogotá D.C. – Colombia · FITEC S.A.S.</div>
+</footer>
+
+</body>
+</html>
